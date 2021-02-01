@@ -1,6 +1,7 @@
 ---
-title: *Activity* 横竖屏
-tag: Android View
+title: Activity 横竖屏
+tag: Android
+category: 
 ---
 
 

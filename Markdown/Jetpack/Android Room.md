@@ -13,7 +13,7 @@ Room 是一个关系映射对象库，可以使我们很方便的访问 App 数�
 * **Entity:** 将 Model 或 pojo 类，标记为数据库行，每个 Entity 都会创建一个数据库表来保存项目。实体类必须在 Database#entities  数组中引用。除非另有说明，否则 Entity 的每个字段（及其父类）都将 Entity 保留在数据库中
 * **Dao:** 将类或接口标记为数据访问对象。数据访问对象负责定义访问数据库的方法。带有注释的类 Database 必须具有一个带有 0 个参数的抽象方法，并返回带有 Dao 注释的类。
 
-
+<!-- more -->
 
 ``` java
 // File: User.java

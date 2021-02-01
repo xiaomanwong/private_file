@@ -1,10 +1,10 @@
 ---
 title: Android自定义View
-tag: Android View
+tag: Android
+category: View
 ---
 
 
-[TOC]
 
 ## 概述
 
@@ -20,6 +20,8 @@ View在Activity中显示出来，要经历测量、布局和绘制三个步骤�
 - 测量：onMeasure()决定View的大小；
 - 布局：onLayout()决定View在ViewGroup中的位置；
 - 绘制：onDraw()决定绘制这个View。
+
+<!-- more -->
 
 ### 自定义控件分类
 

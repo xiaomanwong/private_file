@@ -17,7 +17,7 @@ tags: Java
 | WeakReference                | 没有任何强引用指向弱引用指向的对象               |
 | PhantomReference             | 任何时候都可以被垃圾回收                         |
 
-
+<!-- more -->
 
 三个子类的构造方法中涉及到 ReferenceQueue 和 Referent：
 

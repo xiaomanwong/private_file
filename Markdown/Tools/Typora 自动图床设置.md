@@ -1,19 +1,19 @@
 ---
 title: Typora 设置图床
 tag: Tools
-
+category: 开发工具
 
 ---
 
-自动图床设置，在我们撰写文档时，会自动将图片保存到图库，并转化 URL 展示出来，最终我们在分享 MD 文档时，避免了本地相对目录，无法引用的情况发生。
+自动图床设置，在我们撰写文档时，会自动将图片保存到图库，并转化 URL 展示出来，最终我们在分享 MD 文档时，避免了本地相对目录，无法引用的情况发生。<!-- more -->
 
 ```json
 {
   "picBed": {
     "uploader": "github",
     "github": {
-      "repo": "ximan/static_file", // 仓库名，格式时 username/reponame
-      "token": "23b311ffd49bba5c99377e7aeed5ecc2096beaad", // github token
+      "repo": "xxxxxxx/static_file", // 仓库名，格式时 username/reponame
+      "token": "xxxxxxxxxxxx", // github token
       "path": "images/", // 自定义存储路径 如： image/
       "branch": "master" // 分支名，默认是 master
     }

@@ -4,6 +4,8 @@
 
 利用 `java.io` 类库。直接为源文件创建一个 `FileInputStream` 负责读取，然后再为目标文件创建一个 `FileOutputStream` 负责写入:
 
+<!-- more -->
+
 ```java
 public static void copyFileByStream(File source, File target) throws IOException {
     InputStream is = null;

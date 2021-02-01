@@ -1,13 +1,18 @@
 ---
 title: Java 注解
 tag: Java
+category: Java 基础
 ---
 
 Java 注解又称标注。注解是元数据的一种形式，提供有关于程序但不属于程序本身的数据。注解对他们注解的代码的操作没有直接影响。
 
+
+
 ## 声明注解
 
 Java 中所有的注解，默认实现接口 `Annotation` 接口
+
+<!-- more -->
 
 ```java
 public interface Annotation {

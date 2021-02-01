@@ -1,6 +1,7 @@
 ---
 title: Java 枚举
 tag: Java
+category: Java 基础
 ---
 
 
@@ -16,6 +17,8 @@ tag: Java
 3. 不可以被继承
 4. JVM 保证线程安全
 5. 无法继承其他类
+
+<!-- more -->
 
 ## 原理分析
 

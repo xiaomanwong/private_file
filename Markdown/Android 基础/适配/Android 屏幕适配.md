@@ -1,6 +1,7 @@
 ---
 title: Android 屏幕适配
-tag: Android 适配
+tag: Android
+categories: 适配
 ---
 
 
@@ -10,6 +11,8 @@ tag: Android 适配
 由于 Android 系统的开放性，任何用户、开发者、 OEM 厂商、运营商都可以对 Android 进行定制，于是导致运行 Android 的设备多种多样，他们有着不同的屏幕尺寸和像素密度。
 
 尽管系统可以通过基本的缩放和调整大小使得界面适配不同的屏幕，但进一步优化，可以确保界面能够在各类屏幕上美观的呈现。
+
+<!-- more -->
 
 ![image-20210128142240773](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128142240773.png)
 

@@ -1,10 +1,18 @@
-# Object 类
+---
+title:  Object 类
+tag: Java
+category: Java 基础
+
+---
+
+
 
 * Object 类是所有 Java 类的父类。每个类都使用  Object 作为 super 类，所有对象都实现这个类的方法
-
 * 可以使用 Object 类型的变量指向任意类型的 super 类
 * Object 类有一个默认构造方法 `public Object()` ，在构造子类实例时，都会先调用这个默认构造方法
 * Object 类的变量只能用作各种值得通用持有者。要对他们进行任何专门操作，都需要知道他们得原始类型并进行转换
+
+<!-- more -->
 
 ## API 
 

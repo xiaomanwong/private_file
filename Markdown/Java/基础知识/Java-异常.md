@@ -1,6 +1,7 @@
 ---
 title: Java 异常
 tag: Java
+categories: Java 基础知识
 ---
 
 **Crash** 应用崩溃，是由于代码异常而导致 APP 非正常退出，导致应用程序无法正常使用，所有工作都停止的现象。
@@ -8,6 +9,8 @@ tag: Java
 发生 **Crash** 后需要重新启动应用（有些情况也会自动重启），而且不管应用在开发阶段做得多么优秀，也无法避免 **Crash** 的放生，在 **Android** 系统中，系统碎片化比较严重，各 **Rom** 之间的差异，设置系统的 BUG ，都可能导致 **Crash** 的发生。
 
 在 **Android** 应用 中发生 **Crash** 有两种类型： Java 层的 Crash 和 Native 的 Crash。这两种 **Crash** 的监控和获取堆栈信息有所不同。
+
+<!-- more -->
 
 ## Java Crash
 

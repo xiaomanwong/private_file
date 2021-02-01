@@ -8,6 +8,8 @@ tag: Android
 
 定义了一个 Android 生命周期的对象。 `Fragment`和`FragmentActivity`类实现`LifecycleOwner`接口， 并可以通过 `getLifecycle()` 方法来访问生命周期。 我们也可以实现`LifecycleOwner`在自己的类。
 
+<!-- more -->
+
 ```Java
 // 在此类事件后分发 LifecycleOwner 的相关方法的返回时。 
 Lifecycle.Event.ON_CREATE ， Lifecycle.Event.ON_START ， Lifecycle.Event.ON_RESUME

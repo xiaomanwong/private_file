@@ -2,16 +2,13 @@
 title: OkHttp Intercept
 date: 2019-04-30 20:42:02
 tags: 三方框架
+category: OkHttp
 ---
 
 
 OKHttp 在开发中经常用到,这里介绍一下 OKHttp 的拦截器(interceptor)的几个使用例子
 
-
-
 要是用拦截器很简单,我们只需要自定义一个 interceptor 类, 并实现 Interceptor 接口, 同时重写 intercept 方法.
-
-
 
 这里介绍两种 Interceptor 的实例
 

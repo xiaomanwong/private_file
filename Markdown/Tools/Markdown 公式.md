@@ -1,7 +1,7 @@
 ---
 title: Markdown 数学公式编辑
 tag: Tools
-
+category: 开发工具
 
 ---
 
@@ -18,7 +18,7 @@ tag: Tools
 - 行内公式：![\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.](https://math.jianshu.com/math?formula=\Gamma(z) %3D \int_0^\infty t^{z-1}e^{-t}dt\%2C.)
 - 行间公式：![\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.](https://math.jianshu.com/math?formula=\Gamma(z) %3D \int_0^\infty t^{z-1}e^{-t}dt\%2C.)
 
-  对应的代码块为：
+  对应的代码块为：<!-- more -->
 
 ```ruby
 $ \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,. $

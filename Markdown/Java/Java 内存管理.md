@@ -9,6 +9,8 @@ tag: Java
 
 ![java runtime](https://github.com/xiaomanwong/static_file/blob/master/images/java_runtime_data_area.png?raw=true)
 
+<!-- more -->
+
 ### 程序计数器
 
 程序计数器是一块较小的内存空间，作用是当前线程锁执行的字节码的行号指示器。

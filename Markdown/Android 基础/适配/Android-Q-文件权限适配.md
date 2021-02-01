@@ -1,11 +1,14 @@
 ---
 title: Android Q 文件权限适配
 date: 2020-03-11 20:11:41
-tags:
+tags: Android
+categories: 适配
 ---
 
 随着 Android Q 的发布，随之而来的适配工作也在暗潮涌动，这里说一下 Android Q 文件存储；
 Android Q 在外部存储设备中为每个应用提供了一个“沙盒”，任何其他应用都无法直接访问您的沙盒文件。由于文件是您应用的私有文件，因此您不在需要任何权限即可在外部存储设备中访问和保存自己的设备。这次更新有效的保证了用户文件的隐私性，也赚少了对应应用所需要的权限数量。
+
+<!-- more -->
 
 “沙盒”就是应用的专属文件，并且访问这个文件夹无需任何权限。Google 推荐应用的沙盒内存储文件地址为
 `Context.getExternalFilesDir()` 下的文件夹。需要传入以下参数
@@ -19,7 +22,7 @@ Environment.DIRECTORY_NOTIFICATIONS
 Environment.DIRECTORY_PICUTRES
 Environment.DIRECTORY_MOVIES
 ```
-<!-- more -->
+
 
 可根据具体需要，传入不通的参数。
 

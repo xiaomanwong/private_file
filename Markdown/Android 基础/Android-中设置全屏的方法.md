@@ -1,7 +1,8 @@
 ---
 title: Android 中设置全屏的方法
 date: 2019-04-16 17:46:31
-tags: Android
+tag: Android
+category: 
 ---
 
 在开发中,我们经常需要把我们的应用设置为全屏,这里有两种方式: 一是在代码中设置; 二是在配置文件中设置
@@ -23,6 +24,8 @@ public class BaseActivity extends Activity {
 ```
 
 强调一点: ** 设置全屏的两段代码,必须在 `setContentView()` 之前调用,不然会报错 **
+
+<!-- more -->
 
 # 二. 在配置文件中修改
 

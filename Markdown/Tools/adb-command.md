@@ -2,7 +2,7 @@
 title: adb command
 date: 2019-04-16 17:38:08
 tags: Android
-
+category: 开发工具
 ---
 
 1. 查看PID

@@ -1,7 +1,7 @@
 ---
 title: RecyclerView 总结
-tag: Android View
-
+tag: Android
+category: View
 ---
 
 
@@ -16,6 +16,8 @@ tag: Android View
    3. setSelection()
 4. 没有强制实现 ViewHolder
 5. 性能不如 RecyclerView
+
+<!-- more -->
 
 ## RecyclerView 优势
 

@@ -2,6 +2,7 @@
 title: OKHttp 重定向拦截器
 date: 2020-02-20 17:05:21
 tags: 三方框架
+category: OkHttp
 ---
 # 使用 OKHttp 进行重定向拦截处理
 
@@ -12,6 +13,8 @@ okhttp重定向存在两个缺陷：
 这样会丢失原来Post请求中的参数。
 
 2. okhttp默认不支持跨协议的重定向，比如http重定向到https
+
+<!-- more -->
 
 为了解决这两个问题写了这个拦截器
 

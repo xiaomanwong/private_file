@@ -1,13 +1,12 @@
 ---
 title: Handler 线程通信基础流程
 date: 2019-08-01 21:54:08
-tags: Handler
+tags: Android
+category: Handler
 ---
 
 
 Android 中线程通信靠的就是 Handler、Looper、Message、MessageQueue 这四个。
-
-
 
 ## Looper 
 
@@ -19,6 +18,8 @@ private Looper(boolean quitAllowed) {
     mThread = Thread.currentThread();
 }
 ```
+
+<!-- more -->
 
 Looper 在构造函数里做了两件事儿：
 
