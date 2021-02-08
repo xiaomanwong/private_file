@@ -70,25 +70,50 @@ Android 系统通过注册一个 `contentProvider` ，在 app 启动时，创建
 我们在 `AndroidManifest.xml` 中可以看到很多有关 `androidx.work` 的接收者的注册，这些都是后面我们要讨论的。
 
 ```java
- public static void initialize(@NonNull Context context, @NonNull Configuration configuration) {
-        synchronized (sLock) {
-            if (sDelegatedInstance == null) {
-                context = context.getApplicationContext();
-                if (sDefaultInstance == null) {
-                    sDefaultInstance = new WorkManagerImpl(
-                            context,
-                            configuration,
-                            new WorkManagerTaskExecutor(configuration.getTaskExecutor()));
-                }
-                sDelegatedInstance = sDefaultInstance;
-            }
+    private void internalInit(@NonNull Context context,
+            @NonNull Configuration configuration,
+            @NonNull TaskExecutor workTaskExecutor,
+            @NonNull WorkDatabase workDatabase,
+            @NonNull List<Scheduler> schedulers,
+            @NonNull Processor processor) {
+
+        context = context.getApplicationContext();
+        mContext = context;
+        mConfiguration = configuration;// 配置器
+        mWorkTaskExecutor = workTaskExecutor; // 任务线程池
+        mWorkDatabase = workDatabase; // Room数据库
+        mSchedulers = schedulers; // 任务调度器
+        mProcessor = processor; // 进度监听器
+        mPreferenceUtils = new PreferenceUtils(workDatabase);
+        mForceStopRunnableCompleted = false;
+
+        // Check for direct boot mode
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && context.isDeviceProtectedStorage()) {
+            throw new IllegalStateException("Cannot initialize WorkManager in direct boot mode");
         }
-  }
+
+        // Checks for app force stops.
+        // 检查应用程序强制停止线程，若有，则安排在合适的工作任务中
+        mWorkTaskExecutor.executeOnBackgroundThread(new ForceStopRunnable(context, this));
+    }
 ```
 
-当代理类和默认实现类都为空时，系统为 `sDefaultInstance` 创建了默认对象 `WorkManagerImpl` ，并创建了一个线程池 `WorkManagerTaskExecutor` 
+当代理类和默认实现类都为空时，系统为 `sDefaultInstance` 创建了默认对象 `WorkManagerImpl` ，并创建了一个线程池 `WorkManagerTaskExecutor` ,并且其调用了重载构造器，继续创建了一个数据库对象 `WorkDatabase` 和一个 `GreedyScheduler` 调度器 ，一个`SystemJobScheduler` 或 `SystemAlarmScheduler`，以及一个 `Processor` 任务进度监听器。
 
-
+* 创建一个 `WorkManagerImpl` 的实例： `sDefaultInstance`， 最终返回的是 `mDelegatedInstance` 通过赋值 `sDelegatedInstance = sDefaultInstance;`
+* 创建一个新的线程池，并将旧的线程池传递给新的。 `WrokManagerTaskExecutor`
+* 创建一个数据库， `WorkDatabase.create()` ，其使用的是 **Room** 数据库。与 Jetpack 内关联
+* 创建一组调度器, `GreedyScheduler`, `SystemJobScheduler` 或  `SystemAlarmScheduler`
+* 创建一个 `Processor` ，进入进度监听器
+* 检查应用程序强制停止的任务，并重新安排合适的时间工作
 
 ## enqueue
+
+上面说完了初始化，接下来我们继续说入队列
+
+```java
+public Operation enqueue(@NonNull List<? extends WorkRequest> workRequests) 
+    return new WorkContinuationImpl(this, workRequests).enqueue();
+}
+```
 
