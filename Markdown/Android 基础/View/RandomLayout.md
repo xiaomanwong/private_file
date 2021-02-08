@@ -11,6 +11,7 @@ category: View
 ![image-20210208162638517](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210208162638517.png)
 
 在有效空间内，随机摆放子 View ，并保障子 View 不会重叠。类似的需求，在开发过程中也会经常遇到。从图中看，随机摆放，那就不能使用常规的 `LinearLayout` `RelateLayout` 或者是 `RecyclerView` 这些。因为他们都不满足随机性。
+<!--more -->
 
 ### 分析
 
