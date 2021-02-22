@@ -336,4 +336,55 @@ Tag 在协作开发中起着不可磨灭的作用，使用 tag 来记录某一�
 
     执行命令时，很容易显示 **merge 失败**，使用 `git diff` 查看冲突内容，并手动修改冲突，执行 `git add filename` 以表示解决冲突，再执行 `git rebase --continue` 继续执行 rebase。
 
-  
+
+
+
+## git  module
+
+某个工作中的项目需要包含并使用另一个项目。也许是第三方库，或者独立开发的，用于多个父项目的库。那么我们想把他们当作两个独立项目，同时又想在一个项目中使用另外一个。
+
+子模块允许你将一个 Git 仓库作为另一个仓库的子目录，他能让你将另一个仓库克隆到自己的项目中，同时还保持提交的独立。
+
+**开始使用子模块**
+
+演示以下如何在一个被分成一个主项目与几个子项目的下开发
+
+我们先将一个已经存在的 git 仓库添加为正在工作的仓库的子模块。可以通过 `git submodue add` 命令后面加上想要跟踪的项目的相对或绝对 URL 来添加新的子模块。
+
+```git
+$ git submodule add https://github.com/xiaofl/slaiiw
+Cloning into `slaiiw` ...
+remote: Counting objects: 11. done
+remote: Compressing objects: 100%(10/10), done.
+remote: Total 11(delta 0), reused 11(delta 0)
+Unpacking objects: 100%(11/11), done.
+Checking connectivity... done.
+```
+
+默认情况下子模块会将子项目放到一个与仓库同名的目录中。
+
+运行 `git status` 
+
+```git
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'
+
+Changes to be committed:
+	(use "git reset HEAD <file> ..." to unstage)
+		
+		new file: .gitmodules
+		new file: slaiiw
+```
+
+首先我们主要一个新的 `.gitmodules`  文件，该配置文件保存了项目 URL 与已经拉要去的本地目录之间的映射
+
+```git
+[submodule "slaiiw"]
+	path = slaiiw
+	url = https://github.com/xiaofl/slaiiw
+```
+
+如果有多个子模块，该文件中就会有多条记录。重点是，该文件也像 `.gitignore` 文件一样收到版本控制。它回合该项目的其他部分一同被拉取推送。这就是克隆该项目的人知道去哪里获取子模块的原因。
+
+`git config submodule.slaiiw.url <URL>` 也可以手动配置。
