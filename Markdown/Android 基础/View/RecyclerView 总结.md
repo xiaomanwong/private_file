@@ -347,11 +347,11 @@ void addToPostLayout(ViewHolder holder, ItemHolderInfo info) {
 缓存共分为四层
 
 1. Scrap  内存缓存
-2. Cache 内存缓存
+2. Cache 内存缓存: 不发生 bindView
 3. ViewCacheExtension 用户自定义缓存
 4. Recycled View Pool 缓存池
 
-
+![img](https://pic2.zhimg.com/80/v2-a8d1b3f8f1d3b96db61ef34b3934c7b9_720w.jpg)
 
 RecyclerView 的缓存时分为多级的，但其实真个逻辑很好理解，
 

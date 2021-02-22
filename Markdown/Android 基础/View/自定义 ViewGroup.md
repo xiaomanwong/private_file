@@ -56,7 +56,7 @@ public class BannerImageView extends ImageView{
     
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // 自己的测量走一遍，因为这个方法内部会调用 setMEasureDimension() 来保存测量结果
+        // 自己的测量走一遍，因为这个方法内部会调用 setMeasureDimension() 来保存测量结果
         // 只有保存了以后，才能取得这个测量结果，否则获取不到
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         
@@ -177,7 +177,7 @@ public class SimpleFlowLayout extends ViewGroup {
     /**
      *	layout 算法，就是不够放，就另外放一行
      * 
-	 *  无非就是前面 onMeasure 结束以后，你可以拿到所有子 View和自己的测量宽高，
+	 *  无非就是前面 onMeasure 结束以后，你可以拿到所有子 View 和自己的测量宽高，
      */
     @Override
     public void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -250,9 +250,9 @@ public class SimpleFlowLayout extends ViewGroup {
             // 已使用 width 进行累加
             usedWidth += childView.getMeasuredWidth();
             // 当前 view 的高度
-			lineHeight = childView.getMeasuredHeight();
+		   lineHeight = childView.getMeasuredHeight();
             
-    }
+    	}
         // 如果 SimpleFlowLayout 的高度为 wrap_content  的时候，采用我们叠加的高度，否则我们当然用父对其的限制高度
         if(heightMode == MeasureSpec.AT_MOST) {
             heightSize = totalHeight;

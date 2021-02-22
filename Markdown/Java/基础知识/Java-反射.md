@@ -99,7 +99,7 @@ method_info {
 ```java
 public class Smaple {
     // step 1
-    static int b dddddddddddddddddddddddddddddddddddddddddddd= 2;
+    static int b = 2;
     // step 2
     static  {
        b = 3; 
