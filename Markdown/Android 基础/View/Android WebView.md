@@ -1,7 +1,7 @@
 ---
 title: Android WebView
-tag: Android
-category: View
+tag: View
+category: Android
 ---
 
 ## **问题**：

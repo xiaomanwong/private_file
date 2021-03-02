@@ -1,7 +1,7 @@
 ---
 title: RecyclerView 总结
-tag: Android
-category: View
+tag: View
+category: Android
 ---
 
 

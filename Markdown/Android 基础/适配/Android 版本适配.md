@@ -1,7 +1,7 @@
 ---
 title: Android 版本适配
-tag: Android
-categories: 适配
+tag: 适配
+categories: Android
 ---
 
 

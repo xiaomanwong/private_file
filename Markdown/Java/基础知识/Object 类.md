@@ -1,7 +1,7 @@
 ---
 title:  Object 类
 tag: Java
-category: Java 基础
+category: Java
 
 ---
 

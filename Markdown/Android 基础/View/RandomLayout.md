@@ -1,7 +1,7 @@
 ---
 title: RandomLayout 随机摆放布局
-tag: Android
-category: View
+tag: View
+category: Android
 ---
 
 

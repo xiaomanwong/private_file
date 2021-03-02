@@ -1,7 +1,7 @@
 ---
 title: Java 泛型
 tag: Java
-category: Java 基础
+category: Java
 ---
 
 

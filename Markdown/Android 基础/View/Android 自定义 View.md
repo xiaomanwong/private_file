@@ -1,7 +1,7 @@
 ---
 title: Android自定义View
-tag: Android
-category: View
+tag: View
+category: Android
 ---
 
 

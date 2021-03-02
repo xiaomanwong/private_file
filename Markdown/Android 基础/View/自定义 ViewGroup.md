@@ -1,7 +1,7 @@
 ---
 title: 自定义 ViewGroup
-tag: Android
-category: View
+tag: View
+category: Android
 ---
 
 

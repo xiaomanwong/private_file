@@ -1,8 +1,8 @@
 ---
 title: Android Q 文件权限适配
 date: 2020-03-11 20:11:41
-tags: Android
-categories: 适配
+tags: 适配
+categories: Android
 ---
 
 随着 Android Q 的发布，随之而来的适配工作也在暗潮涌动，这里说一下 Android Q 文件存储；

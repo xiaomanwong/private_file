@@ -1,8 +1,8 @@
 ---
 title: Android 在一个应用中启动另外一个应用
 date: 2019-04-16 17:45:20
-tag: Android
-category: 
+tag: 技巧类
+category: Android
 ---
 
 
