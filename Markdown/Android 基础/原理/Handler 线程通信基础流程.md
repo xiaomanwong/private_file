@@ -1,8 +1,8 @@
 ---
 title: Handler 线程通信基础流程
 date: 2019-08-01 21:54:08
-tags: Android
-category: Handler
+tags: Handler
+category: Android
 ---
 
 

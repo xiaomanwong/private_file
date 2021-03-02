@@ -1,8 +1,8 @@
 ---
 title: OKHttp 重定向拦截器
 date: 2020-02-20 17:05:21
-tags: 三方框架
-category: OkHttp
+tags: OkHttp
+category: 三方框架
 ---
 # 使用 OKHttp 进行重定向拦截处理
 

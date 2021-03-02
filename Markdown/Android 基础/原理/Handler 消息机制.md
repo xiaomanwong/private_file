@@ -1,7 +1,7 @@
 ---
 title: Handler 消息机制
-tags: Android
-category: Handler
+tags: Handler
+category: Android
 ---
 
 

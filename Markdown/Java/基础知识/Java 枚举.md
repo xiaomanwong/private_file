@@ -1,7 +1,7 @@
 ---
 title: Java 枚举
 tag: Java
-category: Java 基础
+category: Java
 ---
 
 

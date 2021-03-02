@@ -1,7 +1,7 @@
 ---
 title: Java 异常
 tag: Java
-categories: Java 基础知识
+categories: Java
 ---
 
 **Crash** 应用崩溃，是由于代码异常而导致 APP 非正常退出，导致应用程序无法正常使用，所有工作都停止的现象。

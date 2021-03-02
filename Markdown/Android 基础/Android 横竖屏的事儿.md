@@ -1,7 +1,7 @@
 ---
 title: Activity 横竖屏
-tag: Android
-category: 
+tag: 知识点
+category: Android
 ---
 
 

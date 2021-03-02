@@ -1,7 +1,7 @@
 ---
 title: Android 屏幕适配
-tag: Android
-categories: 适配
+tag: 适配
+categories: Android
 ---
 
 

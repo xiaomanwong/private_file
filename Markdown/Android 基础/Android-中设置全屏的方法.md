@@ -1,8 +1,8 @@
 ---
 title: Android 中设置全屏的方法
 date: 2019-04-16 17:46:31
-tag: Android
-category: 
+tag: 技巧类
+category: Android
 ---
 
 在开发中,我们经常需要把我们的应用设置为全屏,这里有两种方式: 一是在代码中设置; 二是在配置文件中设置
