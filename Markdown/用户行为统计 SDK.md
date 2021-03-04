@@ -6,7 +6,7 @@
 
 
 
-![SDK 结构设计](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.jpg)事
+![统计SDK](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/%E7%BB%9F%E8%AE%A1SDK.jpg)
 
 **API：**
 
