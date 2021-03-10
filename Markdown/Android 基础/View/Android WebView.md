@@ -14,11 +14,332 @@ category: Android
 
 2. 页面资源的下载
 
-   一般加载一个 H5 页面，都会产生比较多的网络请求，如图片、js 文件、css 文件等，需要将这些资源都下载完成之后才能完成渲染，这样也会导致页面渲染速度变慢
+   一般加载一个 H5 页面，都会产生比较多的 **串行** 网络请求，如图片、js 文件、css 文件等，需要将这些资源都下载完成之后才能完成渲染，这样也会导致页面渲染速度变慢
+   
+3. 耗费流量
+
+   每次 H5 页面加载时，都需要重新加载 Android WebView 的 H5 页面，每加载一个页面，就会产生很多请求，导致同一个页面被加载多次
+
+
 
 <!-- more -->
 
 ### **那如何解决呢？**
+
+*  前端H5 缓存机制（WebView 自带）
+* 资源预加载
+* 资源拦截
+
+#### 前端 H5 缓存机制
+
+**定义：** 缓存、离线存储
+
+* 意味着 H5 网页加载后会存储在缓存区域，在无网络情况下也可以访问
+* WebView 的本质时在 Android 中嵌入 H5 页面，所以 Android  WebView 自带的缓存机制就是 H5 页面的缓存机制
+* Android WebView 除了新的 file_system 缓存机制还不支持，其他的都支持
+
+**作用：**
+
+* 离线浏览：用户可以在没有网络时，访问 H5 页面
+* 提高页面加载速度 & 减少流量消耗：直接使用已缓存的资源，不需要重新请求和加载
+
+**应用：**
+
+* 缓存机制：如何将加载过的网页数据保存到本地（保存）
+* 缓存模式：加载网页时如何读取之前保存到本地的网页缓存（读取）
+
+##### 缓存机制
+
+Android WebView 自带的缓存机制有 5 种：
+
+1. 浏览器缓存机制
+2. Application Cache 缓存机制
+3. Dom Storage 缓存机制
+4. Web Sql Database 缓存机制
+5. Indexed Database 缓存机制
+6. File System 缓存机制（H5 页面新加入的缓存机制）
+
+##### 浏览器缓存机制
+
+**原理：**根据 HTTP 协议头里的 `cache-control` 或 `Expires` 和 `Last-Modified` 和 `Etag` 等字段来控制文件缓存的机制
+
+1. `Cache-Control` 用于控制文件在本地缓存有效时长
+   如服务器返回 `Cache-Control:max-age=600`，则表示文件在本地应该缓存，且有效时长是  600s。在接下来的 600s 内，如果有请求这个资源，浏览器不会发出 HTTP 请求，而是直接使用本地缓存的文件
+
+2. `Expires`: 与 `Cache-Control` 功能相同，即控制缓存的有效时间
+
+   1. Expires 是 Http 1.0 标准中的字段， Cache-Control 是 Http 1.1 中新增字段
+   2. 当这两个同时出现时， Cache-Control 优先级高
+
+3. `Last-Modified` 标识文件在服务器上的最新更新时间
+   下次请求时，如果文件缓存过期，浏览器通过 `If-Modified-Since` 字段带上这个时间，发送给服务器，由服务器比较时间戳来判断文件是否有修改。如果没有修改，服务器返回 304 告诉前端继续使用缓存；如果有修改，则返回 200， 同时返回新文件。
+
+4. Etag 功能和 `Last-Modified` 一样，标识文件再服务器上的最新更新时间
+
+   不同的是， Etag 的取值是一个对文件进行标识的特征字串
+
+   再向服务器查询文件是否有更新时，浏览器通过 `If-None-Match`  字段把特征字串发送给服务器，由服务器和文件的最新特征字串进行匹配，来判断文件是否有更新。
+
+   Etag 和 Last-Modified 可根据需求使用一个或两个同时使用。两个同时使用时，只要满足其中要给就可以。
+
+**常用方法：**
+
+* Cache-Control 与 Last-Modified 一起使用
+* Expires 和 Etag 一起使用
+
+即 一个控制缓存有效时间，一个用户在缓存失效后，向服务器查询是否有更新
+
+***浏览器缓存机制是浏览器内核的机制，一般都是标准的实现***, 缓存的内容，受存储空间约束，同时也有被清除的风险
+
+##### Application Cache 缓存机制
+
+**原理：**
+
+* 以文件为单位进行缓存，且文件有一定更新机制（类似于浏览器缓存机制）
+
+* AppCache 有啷个关键点 manifest 属性和 manifest 文件
+
+  ```html
+  <!DOCTYPE html>
+  <html manifest="demo_html.appcache">
+  // HTML 在头中通过 manifest 属性引用 manifest 文件
+  // manifest 文件：就是上面以 appcache 结尾的文件，是一个普通文件文件，列出了需要缓存的文件
+  // 浏览器在首次加载 HTML 文件时，会解析 manifest 属性，并读取 manifest 文件，获取 Section：CACHE MANIFEST 下要缓存的文件列表，再对文件缓存
+  <body>
+  ...
+  </body>
+  </html>
+  
+  // 原理说明如下：
+  // AppCache 在首次加载生成后，也有更新机制。被缓存的文件如果要更新，需要更新 manifest 文件
+  // 因为浏览器在下次加载时，除了会默认使用缓存外，还会在后台检查 manifest 文件有没有修改（byte by byte)
+  发现有修改，就会重新获取 manifest 文件，对 Section：CACHE MANIFEST 下文件列表检查更新
+  // manifest 文件与缓存文件的检查更新也遵守浏览器缓存机制
+  // 如用户手动清了 AppCache 缓存，下次加载时，浏览器会重新生成缓存，也可算是一种缓存的更新
+  // AppCache 的缓存文件，与浏览器的缓存文件分开存储的，因为 AppCache 在本地有 5MB（分 HOST）的空间限制
+  ```
+  
+
+
+
+**特点：**
+
+方便构建 WebApp 的缓存， 准们为 WebApp 离线使用而开发的缓存机制
+
+**应用场景：**
+
+存储静态文件（js， css，字体文件等）
+
+是对浏览器缓存机制的补充，不是替代
+
+**实现方案：**
+
+```java
+// 通过设置WebView的settings来实现
+WebSettings settings = getSettings();
+
+String cacheDirPath = context.getFilesDir().getAbsolutePath()+"cache/";
+settings.setAppCachePath(cacheDirPath);
+// 1. 设置缓存路径
+
+settings.setAppCacheMaxSize(20*1024*1024);
+// 2. 设置缓存大小
+
+settings.setAppCacheEnabled(true);
+// 3. 开启Application Cache存储机制
+
+// 特别注意
+// 每个 Application 只调用一次 WebSettings.setAppCachePath() 和
+WebSettings.setAppCacheMaxSize()
+```
+
+
+
+##### Dom Storage 缓存机制
+
+**原理：**
+
+通过存储 key - value 来提供
+
+> Dom Storage 分为 sessiongStorage 和 localStorae, 两者基本相同，区别于作用范围
+>
+> sessionStorage：具备临时性，即存储与页面相关的数据，在离开页面后无法使用
+>
+> localStorage：具备持久性，即保存的数据在页面关闭后还可以使用
+
+**特点：**
+
+存储空间大（5mb）存储空间对于不同浏览器不同
+
+存储安全、边界：Dom Storage 存储的数据在本地，不需要经常和服务器交互
+
+**应用场景：**
+
+存储临时，简单的数据，类似于 Android 的 SharedPreference 机制。
+
+```java
+getSettings().setDomStorageEnabled(true);
+```
+
+##### Web SQL Database 缓存机制
+
+**原理：**
+
+基于 SQL 的数据库存储机制
+
+**特点：**
+
+充分利用数据库的有时，可方便对数据进行 CUDA
+
+**场景**
+
+适合数据库的结构化数据
+
+**实现：**
+
+```java
+// 通过设置WebView的settings实现
+WebSettings settings = getSettings();
+
+String cacheDirPath = context.getFilesDir().getAbsolutePath()+"cache/";
+settings.setDatabasePath(cacheDirPath);
+// 设置缓存路径
+
+settings.setDatabaseEnabled(true);
+// 开启 数据库存储机制
+
+```
+
+
+
+##### IndexDB 缓存机制
+
+属于 NoSQL 数据库，通过存储字符串的 Key - Value 来提供。
+
+**特点**
+
+可存储复杂，数据量大的结构化数据
+
+**实现**
+
+```java
+// 通过设置WebView的settings实现
+WebSettings settings = getSettings();
+
+settings.setJavaScriptEnabled(true);
+// 只需设置支持JS就自动打开IndexedDB存储机制
+// Android 在4.4开始加入对 IndexedDB 的支持，只需打开允许 JS 执行的开关就好了。
+```
+
+
+
+##### File System 
+
+**原理：**
+
+为 H5 页面的数据，提供一个虚拟的文件系统
+
+* 可进行文件的 CUDA，就像 Native App 访问本地文件系统一样
+* 虚拟的文件系统运行在沙盒中
+* 不同 WebApp 的虚拟文件系统的互相隔离的，虚拟文件系统与本地文件系统也是互相隔离的。
+
+虚拟文件系统提供了两种类型的存储空间：临时和持久
+
+* 临时的存储空间：由浏览器自动分配，但可能被浏览器回收
+* 持久性存储空间：需要显示申请；自己管理（浏览器不会回收，也不会清除内容）；内存空间大小通过配额管理，首次申请时会一个初始的配额，配额用完需要再次申请。
+
+**特点：**
+
+* 可存储数据体积较大的二进制数据
+* 可预加载资源文件
+* 可直接编辑文件
+
+**场景：**
+
+通过文件系统管理数据
+
+**使用**
+
+由于 file system 时 H5 新加入的缓存机制， Android WebView 暂时不支持
+
+
+
+##### 使用建议
+
+| 存储静态资源文件（js等）       | 浏览器缓存机制<br />Application Cache 存储机制 |
+| ------------------------------ | ---------------------------------------------- |
+| 存储，临时、简单的数据         | Dom Stroage 缓存机制                           |
+| 存储复杂、数据量大的结构化数据 | indexedDB缓存机制                              |
+| 在 Android WebView 中进行设置  |                                                |
+
+
+
+##### 缓存模式
+
+**WebView 的 5 种缓存模式**
+
+* LOAD_CACHE_ONLY: 不使用网络，只读取本地缓存数据
+* LOAD_DEFAULT: 根据 cache-control 决定是否从网络上取数据
+* LOAD_CACHE_NORMAL: API Level 17 中已废弃，从 API Level 11 开始作用同 LOAD_DEFAULT 模式
+* LOAD_NO_CACHE： 不使用缓存，只从网络获取
+* LOCA_CACHE_ELSE_NETWORK: 只要本地有，无论是否过期，或者 no-cache 都使用缓存的数据。本地没有缓存时才从网络上获取
+
+```java
+WebSettings settings = mWebView.getSettings();
+settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+```
+
+
+
+#### 资源预加载
+
+**定义：**
+
+提早加载将需要使用的 H5 页面，即 *提前构建缓存*
+
+使用时直接取过来用，而不是用时才加载
+
+##### 预加载 WebView 对象
+
+* 此处主要分为 2 方面，首次使用 WebView 对象 和 后续使用 WebView 对象
+
+| 类型                  | 原因                                                         | 思路                                                         | 实现                                                        |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
+| 首次使用 WebView 对象 | 首次初始化 WebView 会比第二次初始化慢很多<br />初始化后，即使 WebView 已释放，但一些多个 WebView 公用的全局服务 / 资源对象仍未释放<br />第二次初始化时则不需要在生成，从而快。 | 1. 用用启动时初始化一个全局的 WebView 对象<br />2. 当用户需要加载 H5 页面时，则直接使用该 WebView 对象加载并显示 | 在 Android  的 BaseApplication 里初始化要给 web View 对象   |
+| 后续使用 WebView 对象 | 多次创建 WebView 对象会耗费很多时间和资源                    | 1. 自身构建 WebView 服用池<br />2. 当用户需要使用 WebView 加载 H5 时，直接使用该 WebView 对象池加载和展示 | 采用  2个/多个 webView 重复使用，而不需要每次打开 H5 都新建 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 对于第一点，其实主要是由前端代码和手机硬件决定，因为我们这里讨论的是对于 app 的性能优化，暂时不考虑；
 
