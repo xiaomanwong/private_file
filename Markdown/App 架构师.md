@@ -20,4 +20,8 @@
 
 架构的核心就是**功能、安全、性能和稳定**。
 
-App 架构师的核心职责包括选型规划、架构设计、技术攻关、沟通协调、疑难攻略。
+App 架构师的核心职责包括
+
+选型规划、架构设计、技术攻关、沟通协调、疑难攻略。
+
+![资讯类 APP 架构图](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/%E8%B5%84%E8%AE%AF%E7%B1%BB%20APP%20%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg)
