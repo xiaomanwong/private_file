@@ -4,8 +4,6 @@
 
 ## 结构
 
-
-
 ![统计SDK](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/%E7%BB%9F%E8%AE%A1SDK.jpg)
 
 **API：**

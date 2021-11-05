@@ -1,8 +1,6 @@
 # 异常解决方案
 
-
-
-## Only fullscreen opaque activities can request orientation
+## 1. Only fullscreen opaque activities can request orientation
 
 [StackOverflow 解决方案](https://stackoverflow.com/questions/48072438/java-lang-illegalstateexception-only-fullscreen-opaque-activities-can-request-o)
 
@@ -32,3 +30,48 @@
 01-08 10:17:57.966 26362 26362 E AndroidRuntime:        ... 9 more
 ```
 
+## 2. Failed to open zip file.Gradle’s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.）
+
+当我们打开一个别人的项目时，经常因为 Android Studio 版本不一致，Gradle 版本不一致等原因，造成项目无法编译通过，具体报错日志如下：
+
+```html
+Failed to open zip file.
+Gradle's dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)
+Re-download dependencies and sync project (requires network)
+```
+
+那么，首先我们要清楚知道，`Gradle` 的下载是需要科学上网的，那么我就默认您已经会了。那么接下来我们看一下为什么会出现这个问题。
+
+通过报错信息我们分析，可以看出是应为 Gradle 的依赖下载被中断，也有可能是因为网络请求超时。系统提示我们可以点击 `Re-download dependencies and sync project (requires network)` 重新下载。但有些时候，点击后会立即报错，提示 `Failed to open zip file` ，相同的报错一直出现，不论我们如何操作。
+
+那么这个原因是什么呢？我们先来看一下本地的 `gralde` 配置，打开文件 `gradle/wrapper/gradle-wrapper.properties`
+
+```gradle
+#Wed Apr 07 10:14:35 CST 2021
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
+```
+
+我们看到，当前工程配置的是 `gradle-6.5-bin.zip` 的工具，因此当我们打开项目后，工具会开始同步下载对应的工具，就会在 `.gradle/wrapper/dists/` 下创建对应的目录结构。因此当网络发生终端后，编译器会傻傻的认为 `gradle` 已经下载完成，会开始解析已下载好的 `zip` 文件，但因为网络问题，该文件是一个破损文件，无法正常使用；当我们点击 `Re-download dependencies and sync project (requires network)` 时，也会优先检查本地配置好的环境中是否有当前信息。因此我们在重复点击 `Re-download dependencies and sync project (requires network)` 就会立即报错。
+
+### 解决方案：
+
+#### 方案一：
+
+通过科学的方式，从 [Gralde 仓库](https://services.gradle.org/distributions/) 下载你对应的 `gradle` 版本，然后通过离线配置的方式，配置给你的项目，当这个方案在 `Android Studio 4.1.3` 中我已经找不到了，可能在 `Android Studio` 的前几个版本也有可能找不到，具体的可自行查阅，也可使用方案二
+
+#### 方案二：
+
+依据产生问题的错误信息，我们对应的去解决问题，
+
+1. 保证自己可以科学上网
+2. 保证自己当前以及开始后的一段时间网络状态良好
+3. 手动删除 `.gradle/wrapper/dists/` 下不完整的数据（就是一个文件夹）
+4. 点击 `Re-download dependencies and sync project (requires network)` 系统就会自动开始下载
+
+## 3. Binder invocation to an incorrect interface
+
+多数情况是因为通信双方包名不匹配
