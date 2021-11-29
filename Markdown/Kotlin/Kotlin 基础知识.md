@@ -105,7 +105,76 @@ Kotlin 空安全的实现分为两种
 
 
 
+**内联函数** inlinev
 
+
+
+**泛型**
+
+```kotlin
+// Kotlin 对泛型进行约束
+class Test<T> where T:Callback, T: Runnable {
+  fun add(t: T) {
+    t.run()
+    t.callback()
+  }
+}
+
+class A: Callback, Runnable{
+  override fun run(){
+    
+  }
+  
+  override fun callback(){
+    
+  }
+  
+}
+
+```
+
+Kotlin 是真泛型
+
+```kotlin
+public <T> T fromJson(String json, Class<T> calssOfT) throws JsonSyntaxException{
+  
+}
+
+inline fun <reified T> Gson.fromJson(json: String): T {
+  return fromJson(json, T::class.java)
+}
+```
+
+**Kotlin 扩展库**
+
+* Kotlinx.coroutines
+* Kotlinx-io
+* Android KTX
+
+协程：
+
+协程和线程类似，但协程发生阻塞任务后，可主动交出 CPU 资源，交给其他的协程使用
+
+
+
+**suspend**
+
+协程挂起，被 suspend 修饰的函数智能被有 suspend 修饰的函数调用
+
+suspend 修饰的函数或 lambda 被编译后悔多一个参数类型叫 Continuation
+
+协程的异步调用本质上是一次回调（通过  Continuation 的 resume(value: T） 的回调
+
+```kotlin 
+fun test () {
+  launch {
+    val job = async {
+				"hello"
+    }
+    println(job.await())
+  }
+}
+```
 
 
 

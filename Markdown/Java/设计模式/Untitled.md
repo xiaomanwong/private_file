@@ -62,5 +62,5 @@
 >
 > abstract  和 interface
 
-
+![image-20211119173717815](https://i.loli.net/2021/11/19/8iXdcJoVFHWSR5r.png)
 
