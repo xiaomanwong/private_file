@@ -4,7 +4,7 @@
 
 [StackOverflow 解决方案](https://stackoverflow.com/questions/48072438/java-lang-illegalstateexception-only-fullscreen-opaque-activities-can-request-o)
 
-```tex
+```txt
 01-08 10:17:57.966 26362 26362 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.fx/com.hachi.iot.main.HomeActivity}: java.lang.IllegalStateException: Only fullscreen opaque activities can request orientation
 01-08 10:17:57.966 26362 26362 E AndroidRuntime:        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3303)
 01-08 10:17:57.966 26362 26362 E AndroidRuntime:        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3411)
@@ -75,3 +75,26 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
 ## 3. Binder invocation to an incorrect interface
 
 多数情况是因为通信双方包名不匹配
+
+
+
+## 4. No signature of method: build 编译错误的方法
+
+```groovy
+* What went wrong:
+A problem occurred evaluating project ':yidian'.
+> No signature of method: build_3ddmv1fz9hc2e9evvptkrv8y6.android() is applicable for argument types: (build_3ddmv1fz9hc2e9evvptkrv8y6$_run_closure3) values: [build_3ddmv1fz9hc2e9evvptkrv8y6$_run_closure3@3b735dd4]
+```
+
+**原因分析**
+
+从错误信息看，其实是说你的 `build.gradle` 脚本内容错误，一般是在各个闭包中，添加了不正确的已知闭包实现。
+
+例如 `android{}` 闭包中增加大小写不正确的配置等。
+
+**解决措施**
+
+检查最近添加的 `build.gradle` 脚本
+
+1. 是否添加的层次结构不正确，例如 ndk 应该在 defaultConfig 闭包中
+2. 是否有大小写不正确的、拼写错误的；
