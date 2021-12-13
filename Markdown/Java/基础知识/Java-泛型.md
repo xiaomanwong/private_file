@@ -4,6 +4,15 @@ tag: Java
 category: Java
 ---
 
+1. 为什么我们需要泛型
+2. 泛型类、泛型接口和泛型方法
+3. 如何限定类型变量
+4. 泛型使用中的约束和局限性
+5. 泛型类型能继承吗
+6. 泛型中通配符类型
+7. 虚拟机是如何实现泛型的
+
+
 
 泛型，即 **参数化类型**。我们比较熟悉的就是定义方法时有形参，然后调用方法时传递实参。
 
@@ -30,7 +39,6 @@ public interface TypeInterface<T> {
 }
 
 // 泛型方法
-// 
 public <T> T typeMethod(T t){
     
 }
@@ -95,7 +103,49 @@ class Pair<T> {}
 
 泛型类可以继承或者扩展其他泛型类，比如 `List` 和 `ArrayList`
 
+类之间存在继承关系，但泛型之间没有继承关系
+
+```java
+class Fruit{
+    int color;
+}
+
+class Apple extends Fruit {
+    
+}
+
+class Orage extends Fruit {
+    
+}
+
+class HuaNiu extends Apple{
+    
+}
+
+
+class GenericType<T> {
+    T data;
+}
+
+public static void main(String[] args) {
+    GenericType<Fruit> a  = new GenericType<>();
+    GenericType<Origin> b  = new GenericType<>();
+}
+
+
+/**
+? extends Fruit: 表示约束泛型为 Fruit 的子类及其本身
+*/
+public static print(GenericType<? extends Fruit> p) {
+    System.out.println(p.getData().getColor());
+}
+```
+
+
+
 ### 通配符
+
+通配符只用在方法上
 
 ```java
 class Fruit {}
@@ -116,10 +166,10 @@ public void use () {
 }
 ```
 
-因为上面的方案不被 SDK 允许，于是提出了一个通配符类型
+因为上面的方案不被 `SDK` 允许，于是提出了一个通配符类型
 
-* `? extends X` 表示类型的上界，类型参数是 X 的子类
-* `? super X` 表示类型的下界，类型参数是 X 的父类
+* `? extends X` 约束类型的上界，类型参数是 X 的子类
+* `? super X` 约束类型参数的下界，类型参数是 X 的父类
 
 #### ? extends X，可读不可写
 
@@ -161,6 +211,12 @@ get 方法只返回一个 Object 类型的值。
 ## 虚拟机是如何实现的
 
 Java 语言中的泛型，再程序源码中存在，再编译后的字节码文件中，就已经替换为原来的远程类型（Raw Type）并且再相应的地方插入了强制转换代码，因此对于运行期间的 Java 语言来说，`ArrayList<int>` 与 `ArrayList<String>` 就是同一个类，所以泛型技术实际上是 Java 语言的语法糖， Java 语言中的泛型实现方法成为泛型擦除，基于这种方法实现的泛型称为**伪泛型**
+
+```java
+System.out.print((String)map.get("sss"));
+```
+
+
 
 ## 泛型擦除
 
