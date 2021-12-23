@@ -98,3 +98,33 @@ A problem occurred evaluating project ':yidian'.
 
 1. 是否添加的层次结构不正确，例如 ndk 应该在 defaultConfig 闭包中
 2. 是否有大小写不正确的、拼写错误的；
+
+
+
+## 5. Android Resource link error  
+
+有两种原因：
+1. xml 文件内容有错误
+
+   可仔细检查报错位置，查找报错
+
+2. SDK 三方资源文件问题
+
+   1. 引入的 AAR 有第三方依赖
+
+      有第三方依赖的情况下， 通过本地打包 AAR， 提供给宿主使用，第三方资源无法通过本地打包打入 AAR 中，导致宿主无法正常使用
+
+   2. 引入的 AAR 使用的系统版本过高，低版本宿主无法使用高版本 API
+
+      ```groovy
+      configurations.all {
+              resolutionStrategy {
+                  force 'com.google.android.material:material:1.1.0'
+                  force 'androidx.constraintlayout:constraintlayout:2.1.2'
+              }}
+      ```
+
+      可通过配置，强制要求宿主使用对应版本的依赖库
+
+
+
