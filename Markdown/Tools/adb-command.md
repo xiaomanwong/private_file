@@ -19,6 +19,9 @@ category: 开发工具
   
   按照 PID 筛选日志
   adb logcat | grep <PID>
+  
+  输出到文件
+  db logcat > logcat.log
   ```
 
 3. 查询链接设备
@@ -174,5 +177,4 @@ category: 开发工具
     // 获取处于栈顶的 activity
     adb shell dumpsys activity | grep mFocusedActivity
     ```
-
 
