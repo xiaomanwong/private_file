@@ -56,6 +56,3 @@ category: 开发工具
 
 我们也可以配置一些插件，如上 Json 中未开发的部分，具体可参考 [Typora 文件配置](https://picgo.github.io/PicGo-Core-Doc/zh/guide/config.html#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6) 和 [图片上传工具配置](https://support.typora.io/Upload-Image/)
 
-
-
-![image-20220314100502209](/Users/admin/Downloads/image-20220314100502209.png)
