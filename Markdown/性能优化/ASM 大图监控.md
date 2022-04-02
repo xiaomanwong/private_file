@@ -1,5 +1,10 @@
+大图监控
 
+---
 
+## 大图监控
 
+### Android 打包流程
 
-![apk 打包流程](https://mmbiz.qpic.cn/mmbiz/ibqjtLERibJ1pmbwJsqwaS7Kic827icibSBwyuDNd0V4k5FGoDZbuHnnPBbeel3BL3B70BowCSw129ceuBSuvAPWiamw/640?wx_fmt=other&wxfrom=5&wx_lazy=1&wx_co=1)
+![Android  打包流程](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/未命名文件.jpg)
+
