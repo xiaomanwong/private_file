@@ -27,7 +27,7 @@ Text 用来显示字符串的组件
 
 我们在 `entry->src->main->package->Slice` 中的 MainAbilitySlice.java 文件
 
-![image-20220203134140968](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203134140968.png)
+![image-20220203134140968](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203134140968.png?token=GHSAT0AAAAAABTDT2CCYF5XL4COB662UMUCYSNPZWQ)
 
 在 onStart 方法中修改
 
@@ -54,7 +54,7 @@ public void onStart(Intent intent) {
 }
 ```
 
-![image-20220203142012506](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203142012506.png)
+![image-20220203142012506](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203142012506.png?token=GHSAT0AAAAAABTDT2CCM2JXMSALD64PFZHSYSNP3BQ)
 
 `super.setUIContent(myLayout)` 将创建好的 Text 组件实例 text 放入容器组件中。也可通过 Java 代码增加一些修饰:
 
@@ -69,15 +69,15 @@ text.setTextColor(Color.GREEN);
 text.setFont(Font.SANS_SERIF);
 ```
 
-![image-20220203142059000](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203142059000.png)
+![image-20220203142059000](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203142059000.png?token=GHSAT0AAAAAABTDT2CCD7GYXTYXTEGXAROUYSNP2EA)
 
 #### 2. xml 创建 Text 组件
 
 `entry->src->main->resource->base->layout->layout_main.xml`
 
-![image-20220203143019037](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203143019037.png)
+![image-20220203143019037](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203143019037.png?token=GHSAT0AAAAAABTDT2CDXRQ23MLQP7W3GK6GYSNP2NQ)
 
-![image-20220203143047314](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203143047314.png)
+![image-20220203143047314](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20220203143047314.png?token=GHSAT0AAAAAABTDT2CDB3GZQS2EQYKB2RMOYSNP2UA)
 
 ```java
 @Override

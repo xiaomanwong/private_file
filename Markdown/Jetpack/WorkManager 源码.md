@@ -18,7 +18,7 @@ WorkManager.getInstance(mContext).enqueue(workRequest)
 
 ## getInstance()
 
-![workmananger_getInstance](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/workmananger_getInstance.jpg)
+![workmananger_getInstance](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/workmananger_getInstance.jpg?token=GHSAT0AAAAAABTDT2CD5QN77CTJACRUOCSMYSNPIDQ)
 
 ```java
 public static @Nullable WorkManagerImpl getInstance() {
@@ -65,7 +65,7 @@ public class WorkManagerInitializer extends ContentProvider {
 
 Android 系统通过注册一个 `contentProvider` ，在 app 启动时，创建了 Work Manager。我们可以生成一个 apk 文件，查看其 `AndroidManifest.xml` 就能够看到。
 
-![image-20210202174009370](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210202174009370.png)
+![image-20210202174009370](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210202174009370.png?token=GHSAT0AAAAAABTDT2CDL3VHT2JF4ZL3JTMOYSNPIQA)
 
 我们在 `AndroidManifest.xml` 中可以看到很多有关 `androidx.work` 的接收者的注册，这些都是后面我们要讨论的。
 

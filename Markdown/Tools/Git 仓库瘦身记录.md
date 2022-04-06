@@ -42,7 +42,7 @@ glf 能帮我们结局的是速度问题，以及大文件管理，大文件并�
 
 **查看仓库大小命令**：`git count-objects -vH`
 
-![image-20220402102916645](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/202204021029304.png)
+![image-20220402102916645](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/202204021029304.png?token=GHSAT0AAAAAABTDT2CCZO4SW4JWWZRNIH2GYSNOCWQ)
 
 可看到 `size-pack` 有 56G 
 
@@ -52,7 +52,7 @@ glf 能帮我们结局的是速度问题，以及大文件管理，大文件并�
 
  `git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')"`
 
-![image-20220402142444381](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/202204021424431.png)
+![image-20220402142444381](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/202204021424431.png?token=GHSAT0AAAAAABTDT2CCZYEXZOIOUEZVFUOQYSNOD6A)
 
 **删除大文件**
 
@@ -60,7 +60,7 @@ glf 能帮我们结局的是速度问题，以及大文件管理，大文件并�
 
 输入命令后，会展示一个警告，可以忽略，过一会会出现统计数据，如下
 
-![image-20220402142534976](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/202204021425002.png)
+![image-20220402142534976](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/202204021425002.png?token=GHSAT0AAAAAABTDT2CDC4UFU6NL4HHCKJRQYSNOEMQ)
 
 **删除缓存下来的ref和git操作记录**
 

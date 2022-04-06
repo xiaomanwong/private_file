@@ -14,7 +14,7 @@ categories: Android
 
 <!-- more -->
 
-![image-20210128142240773](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128142240773.png)
+![image-20210128142240773](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128142240773.png?token=GHSAT0AAAAAABTDT2CCWZ7Z7IAAME66L2MAYSNPKJA)
 
 ## 基本概念
 
@@ -66,7 +66,7 @@ Android 手机对每类手机屏幕大小都有一个相应的屏幕像素密度
 2. 勾股定理求出手机的对角线物理尺寸
 3. 再储以屏幕大小即可
 
-![image-20210128150307492](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128150307492.png)
+![image-20210128150307492](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128150307492.png?token=GHSAT0AAAAAABTDT2CDVP46KMWU4MF52P3KYSNPKVA)
 
 ### 密度无关像素
 

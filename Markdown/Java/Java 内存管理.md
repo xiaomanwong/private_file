@@ -7,7 +7,7 @@ tag: Java
 
 ## 运行时数据区域
 
-![java runtime](https://github.com/xiaomanwong/static_file/blob/master/images/java_runtime_data_area.png?raw=true)
+![java runtime](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/java_runtime_data_area.png?token=GHSAT0AAAAAABTDT2CDNNCX5OW44AEKNAB2YSNPJIA)
 
 <!-- more -->
 
@@ -195,7 +195,7 @@ Java 虚拟机根据对象存活的周期不同，把堆内存划分为几块，
 
 新生成的对象优先存放在新生代中，新生代对象存活率很低，在新生代中，常规应用进行一次垃圾收集一般可以回收 70%~95% 的空间，回收效率很高。新生代中因为要进行一些复制操作，所以一般采用的 GC 回收算法是**复制算法**。 新生代又可以继续细分为 3 部分：`Eden`、`Survivor0（简称 S0）`、`Survivor1（简称S1）`。这 3 部分按照 8:1:1 的比例来划分新生代。
 
-![img](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/v2-72e5df4267ad17b0ce2754232a8be076_720w.jpg)
+![img](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/v2-72e5df4267ad17b0ce2754232a8be076_720w.jpg?token=GHSAT0AAAAAABTDT2CCYRTGWXO5FD4V4ELIYSNPJRA)
 
 - 绝大多数刚刚被创建的对象会存放在 Eden 区。
 - 当 `Eden` 区第一次满的时候，会进行垃圾回收。首先将 `Eden` 区的垃圾对象回收清除，并将存活的对象复制到 `S0`，此时 `S1` 是空的。

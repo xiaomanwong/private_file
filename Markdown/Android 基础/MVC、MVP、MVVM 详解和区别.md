@@ -10,7 +10,7 @@ category: Android
 
 ### MVC
 
-![MVC 结构](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/bg2015020105.png)
+![MVC 结构](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/bg2015020105.png?token=GHSAT0AAAAAABTDT2CDGBOOHYGCXQPVZCG6YSNPTVA)
 
 * 视图层（View） 对应 XML 布局和 Java 代码动态 View 部分
 * 控制层（Controller） MVC 中 Android 的控制层是由 Activity 来承担的， Activity 本来主要是作为初始化页面，展示数据的操作，但是因为 XML 视图功能太弱，所以 Activity 既要负责视图的显示，又要加入控制逻辑，承担的功能过多
@@ -22,7 +22,7 @@ category: Android
 
 ### MVP
 
-![MVP](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/bg2015020108.png)
+![MVP](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/bg2015020108.png?token=GHSAT0AAAAAABTDT2CCN7AQAGWPEV6UF7FUYSNPT7Q)
 
 通过引用接口 `BaseView` ，让相应的试图组件如 Activity, Fragment 去实现 `BaseView` ，实现视图层的独立，通过中间层 Presenter 实现 Model 和 View 的完全解耦。使得更层级之间的通信都是双向的
 
@@ -30,7 +30,7 @@ MVP 彻底解决了 MVC 中 View 和 Controller 分不清楚的问题，但是�
 
 ### MVVM
 
-![img](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/bg2015020110.png)
+![img](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/bg2015020110.png?token=GHSAT0AAAAAABTDT2CCOS73MNYDDWWRQXPKYSNPUHA)
 
 MVP 中我们说过随着业务逻辑的增加，UI 的改变多的情况下，会有很多的更 UI 相关的 case， 这样会造成 View 的接口很庞大。而 MVVM 就解决了这个问题，通过**双向绑定**的机制，实现数据和 UI 内容，只要想改其中一方，另一方都能够及时更新的一种设计理念，省区了很多在 View 中些很多 case 的情况。
 

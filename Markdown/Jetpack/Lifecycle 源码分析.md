@@ -69,7 +69,7 @@ class TestObserver implements LifecycleObserver {
 
 ### **`Lifecycle UML`**
 
-![Lifecycle UML](https://github.com/xiaomanwong/static_file/blob/master/images/Lifecycle%20UML.png?raw=true)
+![Lifecycle UML](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/Lifecycle%20UML.png?token=GHSAT0AAAAAABTDT2CDUK2BEJXEUJAKZ5HAYSNOQ4Q)
 
 **想理解一个东西，最好的方式就是去阅读它**， 这是开发多年总结出的一句话。
 
@@ -412,7 +412,7 @@ private void sync() {
 
 通过上面两个方法，我们总结出 `Lifecycle` 中 `State` 和 `Event` 的时序关系，如下图
 
-![Lifecycle State Sequence](https://github.com/xiaomanwong/static_file/blob/master/images/Lifecycle%20State%20secquece.png?raw=true)
+![Lifecycle State Sequence](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/Lifecycle%20State%20secquece.png?token=GHSAT0AAAAAABTDT2CDBOU4HSB3VVATEM5GYSNOROQ)
 
 同时我们也回顾一下，`getStateAfter()` 方法，对事件和状态的判断，也就明白了状态和事件的关系。
 

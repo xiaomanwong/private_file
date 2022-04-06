@@ -130,7 +130,7 @@ val saveRequest = PeriodicWorkRequestBuilder<SaveImageToFileWork>(1, TimUnit.HOU
 
 灵活的重复任务是对周期性任务的扩展，其特点是要我们对 `Worker` 的运行时间比较敏感的情况。我们可以将 `PeriodicWorkRequest` 配置为在每个时间间隔的 **灵活时间段** 内运行
 
-![PeriodicWork RepatInterval](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/definework-flex-period.png)
+![PeriodicWork RepatInterval](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/definework-flex-period.png?token=GHSAT0AAAAAABTDT2CD64R7WASFHKVWFWFCYSNOSBA)
 
 如图，我们定义了具有灵活时间段的定期任务，需要在创建 `PeriodicWorkRequest`  时传递 `flexInterval` 和 `repeatInterval` 。灵活时间段从 `repeatInterval - flexInterval` 开始，一直到间隔结束
 
@@ -228,7 +228,7 @@ val myUploadWork = OneTimeWorkRequestBuilder<UploadWork>()
 
 初始态为 `ENQUEUED`, 在 `ENQUEUED` 下，当满足约束条件和初始延时要求后立即运行，转换为 `RUNNING` 状态，然后根据结果可转换为 `SUCCESSED`,`FAILED` 如果结果时 `retry`  可能会回到 `ENQUEUED`，随时可以取消进入 `CANCELLED` 状态
 
-![一次性任务状态流转](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/one-time-work-flow.png)
+![一次性任务状态流转](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/one-time-work-flow.png?token=GHSAT0AAAAAABTDT2CDYQVEGTDUY5O2KFNKYSNOSPA)
 
 `SUCCESSED, FAILED, CANCELLED` 均表示 `Worker` 的终止状态， `WorkInfo.State.isFinished() ` 都会返回 true。
 
@@ -236,7 +236,7 @@ val myUploadWork = OneTimeWorkRequestBuilder<UploadWork>()
 
 成功和失败仅时用于一次性和链式工作。周期性任务只有一个终止状态 `CANCELLED`。 这是因为周期任务永远不会结束。每次运行后，无论结果如何，都会重新对其进行调度。
 
-![](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/periodic-work-states.png)
+![](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/periodic-work-states.png?token=GHSAT0AAAAAABTDT2CDWFNFZN4PTRKVE6TGYSNOS3A)
 
 ### 管理工作
 
