@@ -437,7 +437,7 @@ settings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
 ### **WebView 的缓存**
 
-在不配置本地资源的时候，我们第一次打开页面，产生了 n  多请求。但是当我们退出后再次打开这个页面（没有设置加载本地资源）的时候，居然只发生了一次请求，这现象与加载本地资源十分相似。![image-20201027164335807](https://github.com/xiaomanwong/static_file/blob/master/images/image-20201027164335807.png?raw=true)
+在不配置本地资源的时候，我们第一次打开页面，产生了 n  多请求。但是当我们退出后再次打开这个页面（没有设置加载本地资源）的时候，居然只发生了一次请求，这现象与加载本地资源十分相似。![image-20201027164335807](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20201027164335807.png?token=GHSAT0AAAAAABTDT2CCYBKPJS3LF4MZFKDYYSNPQ3Q)
 
 我们观察到，这个请求的 response 的 headers 中的参数，`Last-Modified,ETag, Expires, Cache-Control` 
 

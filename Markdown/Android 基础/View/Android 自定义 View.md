@@ -93,11 +93,11 @@ View在Activity中显示出来，要经历测量、布局和绘制三个步骤�
 2. DecorView是PhoneWindow中的起始节点View，继承于View类，作为整个视图容器来使用。用于设置窗口属性。它本质上是一个FrameLayout
 3. ViewRoot在Activtiy启动时创建，负责管理、布局、渲染窗口UI等等
 
-![activity](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/activity.png)
+![activity](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/activity.png?token=GHSAT0AAAAAABTDT2CCEVYTLP7NBINA6ZHCYSNPO6Q)
 
 对于多View的视图，结构是树形结构：最顶层是ViewGroup，ViewGroup下可能有多个ViewGroup或View，如下图：
 
-![view_arch](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_arch.png)
+![view_arch](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_arch.png?token=GHSAT0AAAAAABTDT2CCDJDWD4XQO6B7VDVOYSNPPMA)
 
 一定要记住：无论是measure过程、layout过程还是draw过程，永远都是从View树的根节点开始测量或计算（即从树的顶端开始），一层一层、一个分支一个分支地进行（即树形递归），最终计算整个View树中各个View，最终确定整个View树的相关属性。
 
@@ -108,10 +108,10 @@ Android的坐标系定义为：
 - 屏幕的左上角为坐标原点
 - 向右为x轴增大方向
 - 向下为y轴增大方向
-  ![zuobiaoxi](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/zuobiaoxi.png)
+  ![zuobiaoxi](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/zuobiaoxi.png?token=GHSAT0AAAAAABTDT2CDAAONDW7JSEAYQO5OYSNPPVQ)
 
 > 区别于一般的数学坐标系
-> ![zuobiaoxi_qubie](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/zuobiaoxi_qubie.png)
+> ![zuobiaoxi_qubie](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/zuobiaoxi_qubie.png?token=GHSAT0AAAAAABTDT2CCF3CJWIU35XSKOTV2YSNPP6Q)
 
 ###  View位置（坐标）描述
 
@@ -153,15 +153,15 @@ public final int getTop() {
  event.getRawY();
 ```
 
-![zuobiaoxiweizhi](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/zuobiaoxiweizhi.png)
+![zuobiaoxiweizhi](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/zuobiaoxiweizhi.png?token=GHSAT0AAAAAABTDT2CCYSVXLQGZNTICLMA4YSNPMKA)
 
 ### Android中颜色相关内容
 
 Android支持的颜色模式：
-![color1](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/color1.png)
+![color1](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/color1.png?token=GHSAT0AAAAAABTDT2CDRYELTQS37FJSQFVSYSNPMUA)
 
 以ARGB8888为例介绍颜色定义:
-![color2](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/color2.png)
+![color2](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/color2.png?token=GHSAT0AAAAAABTDT2CCGSJKU3USYFXHRTSSYSNPMZQ)
 
 ## View树的绘制流程
 
@@ -185,11 +185,11 @@ view树的绘制流程是通过ViewRoot去负责绘制的，ViewRoot这个类的
 
 ### view的添加
 
-![](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_qiyuan.png)
+![](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_qiyuan.png?token=GHSAT0AAAAAABTDT2CCXWTNEJX7OK5OLCS4YSNPNIQ)
 
 ### view的绘制流程
 
-![view_traversals](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_traversals.png)
+![view_traversals](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_traversals.png?token=GHSAT0AAAAAABTDT2CDRK4RL76Z42ZWQBXAYSNPNQA)
 
 ### measure
 
@@ -212,21 +212,21 @@ view树的绘制流程是通过ViewRoot去负责绘制的，ViewRoot这个类的
 
 5. ScrollView嵌套ListView问题？
 
-![view_requestlayout](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_requestlayout.png)
+![view_requestlayout](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_requestlayout.png?token=GHSAT0AAAAAABTDT2CDORF7C4WSY4OWC6ZAYSNPN2Q)
 
 ### layout
 
 1. 系统为什么要有layout过程？
 2. layout过程都干了点什么事？
 
-![view_performlayout](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_performlayout.png)
+![view_performlayout](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_performlayout.png?token=GHSAT0AAAAAABTDT2CC3K7S3CWMLFYBHD7GYSNPOEQ)
 
 ### draw
 
 1. 系统为什么要有draw过程？
 2. draw过程都干了点什么事？
 
-![view_invalidate](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_invalidate.png)
+![view_invalidate](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/view_invalidate.png?token=GHSAT0AAAAAABTDT2CD2UTU2ZFCGC2B3PZWYSNPOMQ)
 
 ## LayoutParams
 
@@ -610,7 +610,7 @@ MeasureSpec值到底是如何计算得来的呢?
     }
 ```
 
-![measurespec3](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/measurespec3.png)
+![measurespec3](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/measurespec3.png?token=GHSAT0AAAAAABTDT2CDZESLT6N5H52W7C4SYSNPOVQ)
 针对上表，这里再做一下具体的说明
 
 - 对于应用层 View ，其 MeasureSpec 由父容器的 MeasureSpec 和自身的 LayoutParams 来共同决定

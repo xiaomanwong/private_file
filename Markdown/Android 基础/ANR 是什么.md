@@ -18,7 +18,7 @@ category: Android
 
 1. 发生ANR时会调用AppNotRespondingDialog.show()方法弹出对话框提示用户，该对话框的依次调用关系如下图所示：
 
-![ANR对话框调用关系.png](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/640)
+![ANR对话框调用关系.png](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/202204061942387.jpg?token=ADXVIOTSIQT4JT5CPAMJ3WDCJV6MQ)
 
 2. **AppErrors.appNotResponding()，该方法是最终弹出ANR对话框的唯一入口**，调用该方法的场景才会有ANR提示，也可以认为在主线程中执行无论再耗时的任务，只要最终不调用该方法，都不会有ANR提示，也不会有ANR相关日志及报告；通过调用关系可以看出哪些场景会导致ANR，有以下四种场景：
    （1）Service Timeout:Service在特定的时间内无法处理完成

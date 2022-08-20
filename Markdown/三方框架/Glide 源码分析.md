@@ -34,7 +34,7 @@ Glide.with(this).load(url).into(imageView);
 
 从上面的表格中，我们可以看出来 `with` 函数，就是用来帮我创建 `Glide` 对象，并创建一个空白的 `Fragment` 来管理生命周期。其具体的工作流程如图：
 
-![Glide with 时序图](https://github.com/xiaomanwong/static_file/blob/master/images/glide_with_sequence.jpg?raw=true)
+![Glide with 时序图](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/glide_with_sequence.jpg?token=GHSAT0AAAAAABTDT2CDMLBNUKQBCGMSXOMAYSNPX3Q)
 
 由上面的时序图，我们可以顺序的分析，我们一步步去分析。
 
@@ -247,7 +247,7 @@ private static void initializeGlide(Context context, GlideBuilder builder, Gener
 
 至此，with 函数的所有主线业务已经说完了，但究竟 Fragment 是如何监听生命周期变化的呢？我们来看下面这张关系图
 
-![Glide lifecycle](https://github.com/xiaomanwong/static_file/blob/master/images/glide_struct.jpg?raw=true)
+![Glide lifecycle](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/glide_struct.jpg?token=GHSAT0AAAAAABTDT2CDVCLJT63P74X6TTOKYSNPYGQ)
 
 **SupportRequestManagerFragment** 
 
@@ -301,7 +301,7 @@ public class SupportRequestManagerFragment extends Fragment {
 
 ## load
 
-![Glide load](https://github.com/xiaomanwong/static_file/blob/master/images/glide_load.jpg?raw=true)
+![Glide load](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/glide_load.jpg?token=GHSAT0AAAAAABTDT2CDKILIZW6CH63YAIS2YSNPYVA)
 
 我们将 `Glide.with(this).load(url).into(view);` 拆分开来写，如下：
 
@@ -321,7 +321,7 @@ requestBuilder.into(view);
 
 into 的流程相当复杂，流程图已经展示不下，也不清晰。这是一张不完整的时序图。并没有体现网络请求的部分，和缓存的部分。
 
-![](https://github.com/xiaomanwong/static_file/blob/master/images/glide_into.jpg?raw=true)
+![](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/glide_into.jpg?token=GHSAT0AAAAAABTDT2CDDD2NRRJDI4YZNLZYYSNPZEA)
 
 但我们先按照这个残图先分析一下。
 

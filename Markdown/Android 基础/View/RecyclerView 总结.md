@@ -31,7 +31,7 @@ category: Android
 
 
 
-![image-20200709164241306](https://github.com/xiaomanwong/static_file/blob/master/images/image-20200709164241306.png?raw=true)
+![image-20200709164241306](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20200709164241306.png?token=GHSAT0AAAAAABTDT2CCAVNVPNXTFH7PWVZEYSNPRWA)
 
 
 

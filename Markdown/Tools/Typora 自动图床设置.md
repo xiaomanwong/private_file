@@ -34,7 +34,7 @@ category: 开发工具
 
    * 然后点击 `Generate new token`
 
-     ![image-20210128141003873](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128141003873.png)
+     ![image-20210128141003873](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128141003873.png?token=GHSAT0AAAAAABTDT2CDQAFPECRLOBN3TBOWYSNOMHQ)
 
    * 勾选 `repo` 并记录 token
 
@@ -42,7 +42,7 @@ category: 开发工具
 
 ## Typora 设置如下图
 
-![image-20210128141254331](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128141254331.png)
+![image-20210128141254331](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128141254331.png?token=GHSAT0AAAAAABTDT2CD2SETQKBLCZINYLW4YSNOMUQ)
 
 * 下载或更新：大约 18m 的 Picgo 插件，点击安装即可
 
@@ -50,8 +50,9 @@ category: 开发工具
 
 * 点击验证图片上传选项，验证 github 是否连通
 
-  ![image-20210128141827255](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128141827255.png)
+  ![image-20210128141827255](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/image-20210128141827255.png?token=GHSAT0AAAAAABTDT2CDEJR5ZBUGT6AAD4R4YSNOM7Q)
 
 ## 更多配置
 
 我们也可以配置一些插件，如上 Json 中未开发的部分，具体可参考 [Typora 文件配置](https://picgo.github.io/PicGo-Core-Doc/zh/guide/config.html#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6) 和 [图片上传工具配置](https://support.typora.io/Upload-Image/)
+

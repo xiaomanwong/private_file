@@ -49,14 +49,14 @@ category: 开发工具
 ```
 
 **AndroidResourceTools**
-![](https://github.com/xiaomanwong/static_file/blob/master/images/android_resource_tool_variables.png?raw=true)
+![](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/android_resource_tool_variables.png?token=GHSAT0AAAAAABTDT2CCTCKEAVTTW34F5EEIYSNONWA)
 
-![](https://github.com/xiaomanwong/static_file/blob/master/images/android_resource_tools_code.png?raw=true)
+![](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/android_resource_tools_code.png?token=GHSAT0AAAAAABTDT2CCOJLLWWF2D25PGE3KYSNOOPQ)
 
 
  **JsonViewer**
 
- ![](https://github.com/xiaomanwong/static_file/blob/master/images/WX20200220-145420.png?raw=true)
+ ![](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/WX20200220-145420.png?token=GHSAT0AAAAAABTDT2CC6SV6FEPJBRVZWHW4YSNOOFQ)
 
 ## 开发工具
 

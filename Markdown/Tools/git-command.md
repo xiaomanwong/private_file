@@ -159,7 +159,7 @@ git push -u origin master
 
   那么 `git rebase` 和  `git merge` 的区别是什么呢？ `merge`  是将两个分支处理冲突后，新增一个 `commit` 追加到 `master` 上。 `rebase` 是将新特性分支上的 `commit` 记录追加到目标分支上，这个时候，他的 commit 其实已经发生了变化。
 
-  ![rebase 和 merge 的区别](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/v2-d77a94abbae73c7709014167afd4603c_720w.jpg)
+  ![rebase 和 merge 的区别](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/v2-d77a94abbae73c7709014167afd4603c_720w.jpg?token=GHSAT0AAAAAABTDT2CDEQSN6VYSVE7LGF4IYSNOLDA)
 
   相对来说，merge 处理冲突更直接， rebase 能够保证清晰的 commit 记录。
 

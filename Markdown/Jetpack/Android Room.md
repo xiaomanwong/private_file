@@ -70,3 +70,7 @@ Room 允许通过 `Query`  方法返回一个 `LiveData` 类型的数据。它�
 public LiveData<List<User>> loadFirstFiveUsers();
 ```
 
+
+![Img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a049ecd434564b94896711ab0e9e2662~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp)
+
+

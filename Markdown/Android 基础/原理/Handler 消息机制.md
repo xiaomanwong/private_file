@@ -16,7 +16,7 @@ Handler 消息机制，在整个 Android 系统中，有着很重要的地位。
 
 先来一张结构图，让我们清晰的了解一下，我们下面都会分析到哪些内容；也了解一下 `Handler` 机制的核心秘密。
 
-![Handler 类图](https://github.com/xiaomanwong/static_file/blob/master/images/Handler%20%E6%9C%BA%E5%88%B6.png?raw=true)
+![Handler 类图](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/Handler%20%E6%9C%BA%E5%88%B6.png?token=GHSAT0AAAAAABTDT2CC6AKR4GNOZQZ4WUBWYSNPLIQ)
 
 <!-- more -->
 
@@ -186,7 +186,7 @@ ActivityThread 中的 `main()` 方法，在最后一行，执行了我们的 `Lo
 
 接下来就慢慢分析一下 `loop` 都做了什么事情
 
-![looper.loop()](https://github.com/xiaomanwong/static_file/blob/master/images/loop%20for.png?raw=true?raw=true)
+![looper.loop()](https://raw.githubusercontent.com/xiaomanwong/static_file/master/images/loop%20for.png?token=GHSAT0AAAAAABTDT2CDUW2P4SFHHLOZLODCYSNPLUQ)
 
 从流程图上，我们简述了一下 `loop()` 方法，都做了些什么事情，下面就展开讲都做了什么
 
