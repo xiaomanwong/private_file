@@ -1,4 +1,6 @@
 # GooglePlay 发布应用
+
+[Google 隐私协议]( https://play.google.com/about/developer-content-policy/)
 ## 什么是 aab
 Android App Bundle 是一种发布格式，其中包含应用的所有经过编译的代码和资源，它会将 apk 生成及签名交给 GooglePlay 来完成
 GooglePlay 会根据 APP Bundle 针对每种设备配置生成并提供经过优化过的 apk， 因此只会下载特定设备所需的代码和资源来运行应用。

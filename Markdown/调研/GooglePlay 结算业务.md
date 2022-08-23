@@ -24,6 +24,32 @@
 * 自动续期订阅：允许用户在固定时间段内购买动态内容的产品。除非用户选择取消，否则此类订阅会自动续期，如：Apple Music这类按月订阅的商品，会员服务等。
 * 非续期订阅：允许用户购买有时限性服务的产品，此 App 内购买项目的内容可以是静态的。此类订阅不会自动续期。
 
+### 购买令牌：
+购买令牌是一个字符串，表示买家对 Google Play 上的商品的权利。它表示 Google 用户已付费购买特定商品。
+
+
+### 消费确认与履约
+> 践行履约
+
+**acknowledge** 
+是实际的确认操作，进行了 acknowledge 会使订单不会被退款，acknowledge 可由客户端发起，也可由服务器完成。Google 会对已支付但未确认的订单在三天后进行自动退款处理。
+**consume** 
+是专门针对消耗性商品的操作，consume 不仅包含确认的含义，并使得商品可以重复购买。
+
+**履约：**
+可理解为发货，业务费服务器收到付费确认后进行派发虚拟商品的行为。
+
+**补偿机制**
+一个支付流程可能被打断，需要关注的是用户支付完成但没有收到权益的情况，此过程会造成客诉，需要通过订单补偿进行兜底。
+
+### 退款政策
+* 如果某笔购买交易是您的亲朋好友使用您的帐号意外完成的，请在 Google Play 网站上申请退款。
+* 如果您在自己的银行卡或其他付款方式中发现了并非由您/您认识的人完成的 Google Play 购买交易，请在交易后的 120 天内举报未经授权的扣款。
+* 如果您的退款申请已获批准，请查看退款的处理时间要多久。
+
+
+
+
 ## 前期准备
 在应用中销售商品之前，需要创建开发者账号、创建和配置要销售的商品，以及启用和配置用于销售和管理商品的 API。
 
@@ -53,7 +79,7 @@
 
 Google Play 提供了可用于管理商品的网页界面,
 * [创建受管理的商品](https://support.google.com/googleplay/android-developer/answer/1153481)， Google Play 管理中心将一次性商品称为“受管理商品”
-*[创建订阅商品](https://support.google.com/googleplay/android-developer/answer/140504?hl=zh-CN&ref_topic=3452890)
+* [创建订阅商品](https://support.google.com/googleplay/android-developer/answer/140504?hl=zh-CN&ref_topic=3452890)
 
 可使用 Google Play Developer API（服务器到服务器的 API） 中的[inappproducts](https://developers.google.cn/android-publisher/api-ref/rest/v3/inappproducts) REST 资源管理商品。
 
