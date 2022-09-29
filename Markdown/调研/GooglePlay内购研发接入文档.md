@@ -2,7 +2,7 @@
 
 > 介绍如何将 Google Play 结算库集成到应用中, 开始销售商品
 
-
+[toc]{type: "ol", level: [2,3,4,5,6]}
 
 ## 提纲
 
@@ -26,13 +26,17 @@
 
 `BILLING`
 
-## 初始化与 Google Play 的连接
+## 支付与 web3 的关系
 
+根据真是业务场景，使用 Google Play 内购的方式，是在向啫喱 APP 充值**啫喱积分**，发生支付的行为属于 web2 逻辑。与传统的充值业务属于一个类型。
+
+经济系统中的 web3 钱包，是在用户使用**啫喱积分**进行交易的行为。
+
+## 初始化与 Google Play 的连接
 
 **交易流程概览**
 
 ![Img](/Markdown/调研/FILES/GooglePlay内购研发接入文档.md/img-20220823153939.png)
-
 
 ### 添加依赖库
 
@@ -65,8 +69,6 @@ private var billingClient = BillingClient.newBuilder(context)
    .build()
 
 ```
-
-
 
 ### 链接到 Google Play
 
@@ -151,9 +153,7 @@ val billingFlowParams = BillingFlowParams.newBuilder()
 val billingResult = billingClient.launchBillingFlow(activity, billingFlowParams) 
 ```
 
-`launchBillingFlow()`返回 `BillingClient.BillingResponseCode` ,需检查结果,确保购买流程没有错误.
-
-<img src="https://developer.android.com/static/images/google/play/billing/purchase-screen.png" width="420" height="780" alt="拉起 Google Play 支付">
+`launchBillingFlow()`返回 `BillingClient.BillingResponseCode` ,需检查结果,确保购买流程没有错误.<img src="https://developer.android.com/static/images/google/play/billing/purchase-screen.png" width="420" height="780" alt="拉起 Google Play 支付">
 
 **ResponseCode Table**
 | code | value | 
@@ -188,14 +188,11 @@ override fun onPurchasesUpdated(billingResult: BillingResult, purchases: List<Pu
 ```
 
 如果购买成功,示意图:
-
 <img src="https://developer.android.com/static/images/google/play/billing/purchase-success.png?hl=zh-cn" width="420" height="780" alt="购买成功示意图">
 
 购买成功后,系统生产购买令牌(一个唯一标识符),表示用户及所购商品的商品 ID.此 ID 需上传给后端服务器存储及校验购买交易和防欺诈行为.
 
 消费用户会收到包含收据的电子邮件,其中包含订单 ID 或交易唯一 ID.用户没购买一次性商品时,都会收到电子邮件.订阅类商品也会收到邮件.可以在 Google Play 管理中心内使用订单 ID 来管理退款.
-
-
 
 ### 订单状态流转
 ![Img](
@@ -204,15 +201,31 @@ override fun onPurchasesUpdated(billingResult: BillingResult, purchases: List<Pu
 
 ![Img](/Markdown/调研/FILES/GooglePlay内购研发接入文档.md/img-20220822171810.png)
 
-### 支付结构设计
+## 支付结构设计
 ![Img](/Markdown/调研/FILES/GooglePlay内购研发接入文档.md/img-20220823090021.png)接口层：支付组件对外提供的能力，支付发起和订单补偿
 管理层：控制器下有数据管理和连接管理。数据管理是管理订单和商品相关的数据；连接管理是管理 Google 提供的 BillingClient，断开连接等。
 核心层：处理业务的核心逻辑，包括建立连接、获取商品等。并包含日志监控。
 支撑层：依托于 APP 现有的底层基础能力。
 
+### 补偿中心
 
-## 支付与 web3 的关系
+::: tip 目标
+补偿中心着重解决订单流转过程中发生异常情况后的处理逻辑。
+目标是实现用户消费后能够得到所购买的商品，促使消费者和商家完成履约行为，规避欺诈和滥用的行为。减少毁约与坏单的情况发生。
+:::
+#### 异常点位
+1. 用户支付完成，客户端未收到 Token
+1. 用户支付完成，Token 未上报
 
-根据真是业务场景，使用 Google Play 内购的方式，是在向啫喱 APP 充值**啫喱积分**，发生支付的行为属于 web2 逻辑。与传统的充值业务属于一个类型。
+两种情况下，均为用户实际产生消费，因网络中断或其他问题，导致用户未实时收到应有的权益。
 
-经济系统中的 web3 钱包，是在用户使用**啫喱积分**进行交易的行为。
+#### 解决方案
+
+根据 Google Play 能够提供近期购买商品的状态以及对应串联业务 Token 的能力，通过查询重新上报的方式，促进用户能够及时得到权益。
+
+**时机触发**
+* APP 冷启动
+* 用户再次进入钱包
+* 用户再次触发充值
+
+补偿过程，没有页面提示，为后台自动触发处理。用户存在未消费（服务器未履约）的订单时，阻断用户再次充值操作，从客端规避欺诈和滥用的行为。
