@@ -29,8 +29,8 @@ category: Android
 ## ANR 机制
 
 ANR机制可以分为两部分：
-**ANR监测机制：**Android对于不同的ANR类型(Broadcast, Service, InputEvent)都有一套监测机制。
-**ANR报告机制：**在监测到ANR以后，需要显示ANR对话框、输出日志(发生ANR时的进程函数调用栈、CPU使用情况等)。
+**ANR监测机制：** Android对于不同的ANR类型(Broadcast, Service, InputEvent)都有一套监测机制。
+**ANR报告机制：** 在监测到ANR以后，需要显示ANR对话框、输出日志(发生ANR时的进程函数调用栈、CPU使用情况等)。
 
 整个ANR机制的代码也是横跨了Android的几个层：
 **App层**：应用主线程的处理逻辑；
